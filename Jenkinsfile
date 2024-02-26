@@ -1,16 +1,19 @@
 pipeline{
-    agent any
+    agent {
+        docker {
+          image 'node:21-alpine3.18'
+        }
+    }
     
     stages{
-        stage('install tests') {
-            steps{
-                sh """ 
-                    git pull origin main"""
-                sh """
-                    /usr/bin/npm i"""
-                sh """ 
-                /usr/bin/npm test || exit 1"""
-            }
+        stage ("Build") {
+           steps {
+              sh "npm install"
+           }
         }
+        stage("Run tests")
+            steps{
+                sh "npm test || exit 1"
+            }
     }
 }
