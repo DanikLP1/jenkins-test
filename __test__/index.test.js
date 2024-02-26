@@ -1,12 +1,11 @@
-const request = require("supertest");
-const app = require("../index");
+const request = require('supertest');
+const app = require('../index'); // Укажите правильный путь к вашему файлу приложения
 
-describe("Get route", () => {
-  it("page should return hello world", async (done) => {
-    const res = await request(app).get("/");
-    expect(res.statusCode).toEqual(200);
-    expect(res.body).toEqual("Hello world");
-    done();
+describe('GET /', () => {
+  it('should return "Hello world" and status 200', async () => {
+    const response = await request(app).get('/');
+    expect(response.status).toBe(200);
+    expect(response.body).toBe('Hello world');
   });
 });
 
