@@ -4,12 +4,12 @@ pipeline{
     stages{
         stage('install tests') {
             steps{
-                sh """ #!/bin/bash
+                sh """ 
                     git pull origin main"""
-                sh """ #!/bin/bash
-                    npm i"""
-                sh """ #!/bin/bash
-                npm test || exit 1"""
+                sh """
+                    /usr/bin/npm i"""
+                sh """ 
+                /usr/bin/npm test || exit 1"""
             }
         }
     }
